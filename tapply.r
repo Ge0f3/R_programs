@@ -1,5 +1,6 @@
 salary<-mapply(rep,1000,16)
 name<-LETTERS[1:16]
+salary<-seq(10000,25000,by=1000)
 employee<-data.frame(name=name,salary=salary,dept=c("Dep1","Dep2","Dep3","Dep4"))
 tapply(employee$salary,employee$dept,max)
 findmaxsal <- function(x){
