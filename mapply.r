@@ -1,21 +1,17 @@
-num1=list(1,list(2,3),4,list(5,list(6,7)))
-logx<-rapply(num1,function(x){log10(x)})
-logresult <- function(x){
-  result <- c()
-  for(i in 1: length(x)){
-    x1 <- x[[i]]
-    for(j in 1:length(x1)){
-      x2 <- x1[[j]]
-      if(is.numeric(x2)){
-        result <- c(result, log(x2))
-      }
-      
-    }
+numbers<-1:100
+numbers<-mapply(log10,numbers)
+number<-1:100
+number1<-mapply(sum,numbers,number)
+sum1<- function(x,y){
+  num2<-c()
+  for(i in 1 : length(x)){
+    sum<-x[i]+y[i]
+    num2[i]<-sum
   }
-  print(result)
+  print(num2)
 }
- 
-  
-  plotvalues<-microbenchmark::microbenchmark(rapply(num1,function(x){log10(x)}),logresult(num1))
-  library("ggplot2")
-  autoplot(plotvalues)
+
+
+plotvalues<-microbenchmark::microbenchmark(mapply(sum,numbers,number),sum1(numbers,number))
+library("ggplot2")
+autoplot(plotvalues)
