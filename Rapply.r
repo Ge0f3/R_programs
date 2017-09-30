@@ -14,4 +14,6 @@ logx <- function(x){
   }
   print(result)
 
-  logx
+plotvalues<-microbenchmark::microbenchmark(rapply(num1,function(x){log10(x)}),logx(num1),100)
+library("ggplot2")
+autoplot(plotvalues)
